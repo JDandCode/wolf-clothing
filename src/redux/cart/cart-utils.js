@@ -16,5 +16,19 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
     cartItems[id].quantity = cartItems[id].quantity + 1;
 
-    return {...cartItems};
+    const newCart = Object.assign({}, cartItems);
+    return newCart;
+}
+
+export const removeItemFromCart = (cartItems, {id}) => {
+    if(cartItems[id].quantity === 1) return clearItemFromCart(cartItems, cartItems[id]);
+    cartItems[id].quantity = cartItems[id].quantity - 1;
+
+    const newCart = Object.assign({}, cartItems);
+    return newCart;
+}
+
+export const clearItemFromCart = (cartItems, {id}) => {
+    const {[id]: omitted, ...newCartItems} = cartItems;
+    return newCartItems;
 }

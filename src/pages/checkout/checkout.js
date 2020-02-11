@@ -26,11 +26,11 @@ const CheckoutPage = ({cartItems, total}) => {
                 <span>Price</span>
             </div>
             <div className='header-block'>
-                <span>Removee</span>
+                <span>Remove</span>
             </div>
         </div>
         {
-            Object.keys(cartItems).map(id => <CheckoutItem key={id} cartItem={cartItems[id]}/>)
+            Object.keys(cartItems).map(id => <CheckoutItem key={id} quantity={cartItems[id].quantity} cartItem={cartItems[id]}/>)
         }
         <div className='total'>
             <span>Total: ${total}</span>
